@@ -32,7 +32,8 @@ public class Principal {
                 1 - Buscar séries
                 2 - Buscar episódios
                 3 - Listar séries buscadas
-                
+                4 - Buscar sinopse da série
+            
                 0 - Sair                                 
                 """;
 
@@ -62,7 +63,15 @@ public class Principal {
     private void buscarSerieWeb() {
         DadosSerie dados = getDadosSerie();
         dadosSeries.add(dados);
+
         System.out.println(dados);
+        System.out.println("Total de temporadas: " + dados.totalTemporadas());
+        System.out.println("Avaliação: " + dados.avaliacao());
+        System.out.println("Gênero: " + dados.genero());
+        System.out.println("Atores: " + dados.atores());
+        System.out.println("Sinopse: " + dados.sinopse());
+        System.out.println("Imagem: " + dados.imagemCapa());
+
     }
 
     private DadosSerie getDadosSerie() {
@@ -72,6 +81,7 @@ public class Principal {
         DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
         return dados;
     }
+
 
     private void buscarEpisodioPorSerie(){
         DadosSerie dadosSerie = getDadosSerie();
